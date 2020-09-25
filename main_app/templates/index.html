@@ -1,37 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Assessment</title>
-
-  
-</head>
-<body>
- <h1>"Wacky Widgets</h1>
-    <table>
-        <th>
-        <td>Description</td>
-        <td>Quantity</td>
-        <td>Delete</td>
-    </th>
-    {% if widgets|length == 0 %}
-    <p>No widgets on the list yet...</p>
-{% else %}
-    <tr>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <title>Assessment</title>
+  </head>
+  <body>
+    <h1>Wacky Widgets</h1>
+    
+      {% if widgets|length == 0 %}
+      <h3>No widgets on the list yet...</h3>
+      {% else %}
+      <table class="pure-table pure-table-striped">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
         {% for widget in widgets %}
+        <tr>
             <td>{{ widget.description }}</td>
             <td>{{ widget.quantity}}</td>
-            <td><a href="{% url 'delete_widget' widget.id %}">Delete</a></td>
+            <td><a href="{% url 'delete_widget' widget.id %}">X</a></td>
+        </tr>
         {% endfor %}
-    </tr>
-{% endif %}
-</table>
-<hr>
-<a href="{% url 'add_widget' %}">Add A widget</a>
-    
-
-    
-</body>
+      </table>
+        {% endif %}
+      <hr/>
+    <a  class='pure-button' href="{% url 'add_widget' %}">Add A widget</a>
+  </body>
 </html>
