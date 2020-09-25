@@ -1,17 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect 
 from django.views.generic.edit import CreateView, DeleteView
-from .models import Todo
+from .models import Widget
 
 # Create your views here.
 def index(request):
-    todos = Todo.objects.all()
-    return render(request, 'index.html', {'todos': todos})
+    widgets = Widget.objects.all()
+    return render(request, 'index.html', {'widgets': widgets})
 
-class TodoCreate(CreateView):
-  model = Todo
+class WidgetCreate(CreateView):
+  model = Widget
   fields = "__all__"
 
-# def delete_todo(request, id):
-#     Todo.objects.get(id=id).delete()
-#     return redirect('/')
+def delete_widget(request, id):
+    Widget.objects.get(id=id).delete()
+    return redirect('/')
 

@@ -5,24 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Assessment</title>
+
+  
 </head>
 <body>
  <h1>"Wacky Widgets</h1>
- <h2>No Widgets Exits</h2>
- <hr>
+    <table>
+        <th>
+        <td>Description</td>
+        <td>Quantity</td>
+        <td>Delete</td>
+    </th>
+    {% if widgets|length == 0 %}
+    <p>No widgets on the list yet...</p>
+{% else %}
+    <tr>
+        {% for widget in widgets %}
+            <td>{{ widget.description }}</td>
+            <td>{{ widget.quantity}}</td>
+            <td><a href="{% url 'delete_widget' widget.id %}">Delete</a></td>
+        {% endfor %}
+    </tr>
+{% endif %}
+</table>
+<hr>
+<a href="{% url 'add_widget' %}">Add A widget</a>
+    
 
- <h3>Add Widgets:</h3>
- Description:<input type="text"><br><br>
- Quantity: <input type="number"><br><br>
-    {% if Widgets|length == 0 %}
-        
-    {% else %}
-        
-    {% endif %}
-    <div class="card-action">
-        <button>Add Widget</button>
-
-      </div>
-
+    
 </body>
 </html>
