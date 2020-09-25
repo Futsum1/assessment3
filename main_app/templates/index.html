@@ -7,8 +7,22 @@
   <title>Assessment</title>
 </head>
 <body>
-
  <h1>"Wacky Widgets</h1>
-  
+ <h2>No Widgets Exits</h2>
+ <hr>
+
+ <h3>Add Widgets:</h3>
+ Description:<input type="text"><br><br>
+ Quantity: <input type="number"><br><br>
+    {% if Widgets|length == 0 %}
+        
+    {% else %}
+        
+    {% endif %}
+    <div class="card-action">
+        <button>Add Widget</button>
+
+      </div>
+
 </body>
 </html>
